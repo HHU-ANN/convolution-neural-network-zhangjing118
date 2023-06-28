@@ -101,10 +101,10 @@ class NeuralNetwork(nn.Module):      #Alexnet
      return dataset_train, dataset_val, data_loader_train, data_loader_val
 
 def main():
-    model = NeuralNetwork(10).cuda() # 若有参数则传入参数
-    # criterion = nn.CrossEntropyLoss()  # 交叉熵损失函数，用于分类问题
-    # optimizer = optim.SGD(model.parameters(), lr=0.1)  # SGD优化器
-    # dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
+    model = NeuralNetwork(10,init_weights=True).cuda() # 若有参数则传入参数
+    criterion = nn.CrossEntropyLoss()  # 交叉熵损失函数，用于分类问题
+    optimizer = optim.SGD(model.parameters(), lr=0.1)  # SGD优化器
+    #dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
     # dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
     # data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
     # data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
