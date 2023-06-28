@@ -77,26 +77,7 @@ def read_data():
     dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
     data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
     data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
-     # num_epoch = 10
-     # model.train()
-     # inputs = inputs.cuda()
-     # labels = labels.cuda()
-     # for epoch in range(num_epoch):
-     #     # 前向传播
-     #     for idx, (inputs, labels) in enumerate(data_loader_train):
-     #
-     #         outputs = model(inputs.view(inputs.size(0), -1))
-     #         loss = criterion(outputs, labels)
-     #
-     #         # 反向传播和参数优化
-     #         optimizer.zero_grad()
-     #         loss.backward()
-     #         optimizer.step()
-     #
-     #         # 打印训练日志
-     #         if (idx + 1) % 100 == 0:
-     #             print(f'Epoch [{epoch + 1}/{num_epoch}] Index {idx + 1}, Loss: {loss.item()}')
-     return dataset_train, dataset_val, data_loader_train, data_loader_val
+    return dataset_train, dataset_val, data_loader_train, data_loader_val
 
 def main():
     model = NeuralNetwork(10,init_weights=True).cuda() # 若有参数则传入参数
