@@ -93,7 +93,7 @@ def main():
     model.train()
     inputs = inputs.cuda()
     labels = labels.cuda()
-for epoch in range(num_epoch):
+    for epoch in range(num_epoch):
         # 前向传播
         for idx, (inputs, labels) in enumerate(data_loader_train):
 
