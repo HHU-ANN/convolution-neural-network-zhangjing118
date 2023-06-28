@@ -17,7 +17,7 @@ from torch.utils.data import DataLoader
 class NeuralNetwork(nn.Module):      #Alexnet
     # 在Pytorch中，这块代码是核心，__init__主要包括神经网络的定义，forward方法包括计算的流程
     # 在构造神经网络时，模块需要继承自nn.Module
-    def __init__(self, classes_num=10, init_weights=False):
+    def __init__(self, class_num=10, init_weights=False):
         super().__init__()
         # 将全连接层之前的多个层打包
         self.features = nn.Sequential(
@@ -48,7 +48,7 @@ class NeuralNetwork(nn.Module):      #Alexnet
             nn.Dropout(p=0.5),
             nn.Linear(2048 * 2, 2048 * 2),
             nn.ReLU(inplace=True),
-            nn.Linear(2048 * 2, classes_num),
+            nn.Linear(2048 * 2, class_num),
         )
 
         # 初始化权重
