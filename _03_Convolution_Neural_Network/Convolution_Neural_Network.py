@@ -72,11 +72,11 @@ class NeuralNetwork(nn.Module):      #Alexnet
                 nn.init.constant_(m.bias, 0)
 
 
- def read_data():
-     dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
-     dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
-     data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
-     data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
+def read_data():
+    dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
+    dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
+    data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
+    data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
      # num_epoch = 10
      # model.train()
      # inputs = inputs.cuda()
