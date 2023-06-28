@@ -72,42 +72,43 @@ class NeuralNetwork(nn.Module):      #Alexnet
                 nn.init.constant_(m.bias, 0)
 
 
-# def read_data():
-#     # 这里可自行修改数据预处理，batch大小也可自行调整
-#     # 保持本地训练的数据读取和这里一致
-#     dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
-#     dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
-#     data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
-#     data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
-#     return dataset_train, dataset_val, data_loader_train, data_loader_val
+ def read_data():
+     # 这里可自行修改数据预处理，batch大小也可自行调整
+     # 保持本地训练的数据读取和这里一致
+     dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
+     dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
+     data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
+     data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
+     # num_epoch = 10
+     # model.train()
+     # inputs = inputs.cuda()
+     # labels = labels.cuda()
+     # for epoch in range(num_epoch):
+     #     # 前向传播
+     #     for idx, (inputs, labels) in enumerate(data_loader_train):
+     #
+     #         outputs = model(inputs.view(inputs.size(0), -1))
+     #         loss = criterion(outputs, labels)
+     #
+     #         # 反向传播和参数优化
+     #         optimizer.zero_grad()
+     #         loss.backward()
+     #         optimizer.step()
+     #
+     #         # 打印训练日志
+     #         if (idx + 1) % 100 == 0:
+     #             print(f'Epoch [{epoch + 1}/{num_epoch}] Index {idx + 1}, Loss: {loss.item()}')
+     return dataset_train, dataset_val, data_loader_train, data_loader_val
 
 def main():
     model = NeuralNetwork(10).cuda() # 若有参数则传入参数
-    criterion = nn.CrossEntropyLoss()  # 交叉熵损失函数，用于分类问题
-    optimizer = optim.SGD(model.parameters(), lr=0.1)  # SGD优化器
-    dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
-    dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
-    data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
-    data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
-    num_epoch = 10
-    model.train()
-    inputs = inputs.cuda()
-    labels = labels.cuda()
-    for epoch in range(num_epoch):
-        # 前向传播
-        for idx, (inputs, labels) in enumerate(data_loader_train):
+    # criterion = nn.CrossEntropyLoss()  # 交叉熵损失函数，用于分类问题
+    # optimizer = optim.SGD(model.parameters(), lr=0.1)  # SGD优化器
+    # dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
+    # dataset_val = torchvision.datasets.CIFAR10(root='../data/exp03', train=False, download=False, transform=torchvision.transforms.ToTensor())
+    # data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
+    # data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
 
-            outputs = model(inputs.view(inputs.size(0), -1))
-            loss = criterion(outputs, labels)
-
-            # 反向传播和参数优化
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-
-            # 打印训练日志
-            if (idx + 1) % 100 == 0:
-                print(f'Epoch [{epoch + 1}/{num_epoch}] Index {idx + 1}, Loss: {loss.item()}')
     torch.save(model.state_dict(), '/pth/model.pth')
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
