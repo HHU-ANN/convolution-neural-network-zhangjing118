@@ -48,7 +48,7 @@ class NeuralNetwork(nn.Module):      #Alexnet
             nn.Dropout(p=0.5),
             nn.Linear(2048 * 2, 2048 * 2),
             nn.ReLU(inplace=True),
-            nn.Linear(2048 * 2, num_classes),
+            nn.Linear(2048 * 2, class_num),
         )
 
         # 初始化权重
