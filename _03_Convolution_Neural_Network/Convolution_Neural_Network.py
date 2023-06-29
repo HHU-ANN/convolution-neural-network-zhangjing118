@@ -88,7 +88,7 @@ def main():
     # data_loader_train = DataLoader(dataset=dataset_train, batch_size=256, shuffle=True)
     # data_loader_val = DataLoader(dataset=dataset_val, batch_size=256, shuffle=False)
 
-    torch.save(model.state_dict(), '/pth/model.pth')
+    torch.save(model.state_dict(), 'model.pth')
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
     model.load_state_dict(torch.load(parent_dir + '/pth/model.pth',map_location='cpu'))
