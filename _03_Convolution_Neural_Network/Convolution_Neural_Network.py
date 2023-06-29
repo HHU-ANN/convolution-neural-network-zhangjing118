@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 
 
 class NeuralNetwork(nn.Module):
-    def __init__(self, class_num=10, init_weights=False):
+    def __init__(self, class_num=1000, init_weights=False):
         super().__init__()
         # 将全连接层之前的多个层打包
         self.feature = nn.Sequential(
