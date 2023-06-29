@@ -12,11 +12,8 @@ import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 
-# 3x3 卷积定义
 
 
-
-# Resnet 的残差块
 class NeuralNetwork(nn.Module):
     def __init__(self, class_num=10, init_weights=False):
         super().__init__()
@@ -77,6 +74,7 @@ def read_data():
 
 def main():
     model = NeuralNetwork(class_num=10,init_weights=True) # 若有参数则传入参数
+    torch.save(model.state_dict(), "model.pth")
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
     model.load_state_dict(torch.load(parent_dir + '/pth/model.pth',map_location='cpu'))
