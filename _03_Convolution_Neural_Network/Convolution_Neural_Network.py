@@ -80,7 +80,7 @@ def read_data():
     return dataset_train, dataset_val, data_loader_train, data_loader_val
 
 def main():
-    model = NeuralNetwork(10,init_weights=True).cuda() # 若有参数则传入参数
+    model = NeuralNetwork(10,init_weights=True) # 若有参数则传入参数
     # criterion = nn.CrossEntropyLoss()  # 交叉熵损失函数，用于分类问题
     # optimizer = optim.SGD(model.parameters(), lr=0.1)  # SGD优化器
     #dataset_train = torchvision.datasets.CIFAR10(root='../data/exp03', train=True, download=True, transform=torchvision.transforms.ToTensor())
@@ -91,6 +91,6 @@ def main():
     torch.save(model.state_dict(), '/pth/model.pth')
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
-    model.load_state_dict(torch.load(parent_dir + '/pth/model.pth'))
+    model.load_state_dict(torch.load(parent_dir + '/pth/model.pth',map_location='cpu'))
     return model
     
