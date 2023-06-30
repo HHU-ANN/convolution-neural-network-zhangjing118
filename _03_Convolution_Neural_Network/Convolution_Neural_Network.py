@@ -192,8 +192,8 @@ class NeuralNetwork(nn.Module):
 
 
 def main():
-    model = NeuralNetwork(ResidualBlock, [2, 2, 2]).to(device) # 若有参数则传入参数
+    model1 = NeuralNetwork(ResidualBlock, [2, 2, 2]).to(device) # 若有参数则传入参数
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
-    model.load_state_dict(torch.load(parent_dir + '/pth/model.pth'))
-    return model
+    model1.load_state_dict(torch.load(parent_dir + '/pth/model.pth'))
+    return model1
